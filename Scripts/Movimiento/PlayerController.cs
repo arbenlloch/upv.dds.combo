@@ -7,12 +7,8 @@ public class PlayerController : MonoBehaviour
 {
 	public float velocity;
 	public GameObject bala;
-	public bool choca = false;
-	//VERSION 2D
 
-	void Start(){
-		collider2D.isTrigger = choca;
-	}
+	//VERSION 2D
 	void Update(){
 
 		float inputVertical;
@@ -29,21 +25,18 @@ public class PlayerController : MonoBehaviour
         Instantiate(bala, transform.position, Quaternion.identity);
 		//PONER CONTADOR PARA CONTROLAR NUMERO DE BALAS
 		
-		
-    }
-		
-		//rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x,3);
+		   }
 	}
-
-	void OnTriggerEnter2D(Collider2D triangulo)
-	{
-
+	void OnTriggerEnter2D(Collider2D triangulo){
+		
 		var nombre = triangulo.gameObject.name;
 		if (nombre == "paredInferior" || nombre == "paredSuperior") {
-			Destroy(gameObject);
+			Destroy (gameObject);
 		}
 	}
 }
+	
+
 	//VERSION 3D
 	/**
 	 * 

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class enemigoRoca : MonoBehaviour {
 
@@ -12,7 +13,7 @@ public class enemigoRoca : MonoBehaviour {
 		rigidbody2D.velocity = new Vector2(speed,0);
 		
 		// Make the enemy rotate on itself
-		rigidbody2D.angularVelocity = Random.Range(-200, 200);
+		//rigidbody2D.angularVelocity = UnityEngine.Random.Range(-200, 200);
 		
 		// Destroy the enemy in 3 seconds,
 		// when it is no longer visible on the screen
@@ -23,25 +24,26 @@ public class enemigoRoca : MonoBehaviour {
 
 	}
 	
-	 void OnTriggerEnter2D(Collider2D roca){
-			var name = roca.gameObject.name;
+	void OnTriggerEnter2D(Collider2D obj){
+		var name = obj.gameObject.name;
 			
 			// If it collided with a bullet
 			if (name == "bullet(Clone)") {
 				// Destroy itself (the enemy)
+			//Console.WriteLine(name.ToString());
 				Destroy(gameObject);
 				
 				//And destroy the bullet
-				Destroy(roca.gameObject);
+			Destroy(obj.gameObject);
 			}
 			
 			// If it collided with the spaceship
 			if (name == "triangulo") {
 				// Destroy itself (the enemy) to keep things simple
 				Destroy(gameObject);
-
-				//And destroy the triangle
-				Destroy(roca.gameObject);
-			}
+			//Console.WriteLine(name.ToString());
+			//And destroy the spaceship
+			Destroy(obj.gameObject);
+		}
 	 }
 }
