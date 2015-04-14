@@ -2,7 +2,6 @@
 using System.Collections;
 using System;
 
-
 public class enemigoCombo1 : enemigoCombo {
 
 	// Public variable that contains the speed of the enemy
@@ -16,7 +15,7 @@ public class enemigoCombo1 : enemigoCombo {
 		if (Input.GetKeyDown ("q")) 
 			comp = true;
 
-		if (comp == true && Input.GetKeyDown ("m"))
+		if (comp && Input.GetKeyDown ("m"))
 				comp2 = true;
 
 		if (comp && comp2 && Input.GetKeyDown ("g"))
@@ -24,4 +23,3 @@ public class enemigoCombo1 : enemigoCombo {
 	}
 
 }
-//probando
