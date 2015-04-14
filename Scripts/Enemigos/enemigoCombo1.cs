@@ -16,13 +16,11 @@ public class enemigoCombo1 : enemigoCombo {
 		if (Input.GetKeyDown ("q")) 
 			comp = true;
 
-		if (comp == true && Input.GetKeyDown ("m")) 
+		if (comp == true && Input.GetKeyDown ("m"))
 				comp2 = true;
 
-		if (comp == true && comp2 == true && Input.GetKeyDown ("g"))
+		if (comp && comp2 && Input.GetKeyDown ("g"))
 					Destroy (gameObject);
-		
-		 
 	}
 
 }
