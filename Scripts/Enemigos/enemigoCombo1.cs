@@ -24,3 +24,4 @@ public class enemigoCombo1 : enemigoCombo {
 	}
 
 }
+//probando
