@@ -7,7 +7,6 @@ public class enemigoCombo : MonoBehaviour {
 
 	// Public variable that contains the speed of the enemy
 	public int speed = -5;
-	public int combo; 
 	
 	// Function called when the enemy is created
 	void Start(){
