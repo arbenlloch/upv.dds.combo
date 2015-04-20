@@ -3,7 +3,12 @@ using System.Collections;
 using System;
 
 
-public class enemigoCombo : MonoBehaviour {
+public class EnemigoCombo : Enemigo {
+
+	public EnemigoCombo(){
+		setNumEnemigos (getNumEnemigo()+1);
+		Debug.Log("Soy el enemigo numero " + getNumEnemigo());
+	}
 
 	// Public variable that contains the speed of the enemy
 	public int speed = -5;
@@ -20,9 +25,6 @@ public class enemigoCombo : MonoBehaviour {
 		// Destroy the enemy in 3 seconds,
 		// when it is no longer visible on the screen
 		Destroy(gameObject, 7);
-
-		//Function called when the enemy collides with another object
-	   
 
 	}
 
