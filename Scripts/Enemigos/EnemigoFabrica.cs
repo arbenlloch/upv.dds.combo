@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class EnemigoRoca : EnemigoStandar{
+public class EnemigoRoca : Enemigo{
 
 	// Public variable that contains the speed of the enemy
 	public int speed = -5;
