@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class naceEnemigo : MonoBehaviour {
+public class NaceEnemigo : MonoBehaviour {
 
 	// Variable to store the enemy prefab
 public GameObject enemy;
