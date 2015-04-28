@@ -23,18 +23,3 @@ public class EnemigoCombo1 : EnemigoCombo {
 	}
 
 }
-
-/*coger un combo = random 1-10
-switch(num){
-	case(1){
-		if (Input.GetKeyDown ("q")) 
-			comp = true;
-		
-		if (comp && Input.GetKeyDown ("m"))
-			comp2 = true;
-		
-		if (comp && comp2 && Input.GetKeyDown ("g"))
-			Destroy (gameObject);
-	}
-}
-*/

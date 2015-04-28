@@ -14,6 +14,6 @@ public class Empezar : MonoBehaviour {
 	}
 
 	void OnMouseDown(){
-		Application.LoadLevel ("Inicio");
+		Application.LoadLevel ("Juego");
 	}
 }

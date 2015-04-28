@@ -1,37 +1,16 @@
-﻿using System;
 using UnityEngine;
-namespace AssemblyCSharp
+using System.Collections;
+
+public class EnemigoBala : EnemigoStandard
 {
-	public class EnemigoFabrica : MonoBehaviour
-	{
+	public EnemigoBala(){
 		
-		//GameObject enemigoRoca = new EnemigoRoca();
-		//GameObject enemigoCombo = new EnemigoCombo();
-		
-		
-		public EnemigoFabrica ()
-		{
-			
-		}
-		
-		public void construyeEnemigo(Vector3 spawnPoint, double dificultad, GameObject enemigoJuego){
-			
-			if (dificultad == 1) {
-				Debug.Log("Difultad 1");
-				Instantiate (enemigoJuego, spawnPoint, Quaternion.identity);
-			}
-			/**else
-				if (dificultad == 2) {
-
-					Instantiate (new EnemigoRoca(), spawnPoint, Quaternion.identity);
-					Instantiate (new EnemigoCombo(), spawnPoint, Quaternion.identity);
-					Console.Write("Difultad 2");	
-			}else
-
-				Instantiate (new EnemigoRoca(), spawnPoint, Quaternion.identity);
-				Instantiate (new EnemigoCombo(), spawnPoint, Quaternion.identity);
-				Console.Write("Difultad 3");
-			**/
-		}
 	}
+
+	public int speed = -15;
+
+	void Start(){
+		rigidbody2D.velocity = new Vector2(speed,0);
+	}		
 }
+
