@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class EnemigoCombo1 : EnemigoCombo {
+public class enemigoCombo1 : enemigoCombo {
 
 	// Public variable that contains the speed of the enemy
 	public int combo = 1;
