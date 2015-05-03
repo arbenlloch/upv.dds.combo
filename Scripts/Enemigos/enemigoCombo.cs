@@ -39,10 +39,12 @@ public class EnemigoCombo : Enemigo {
 		
 		
 		// If it collided with the spaceship
-		if (name == "triangulo") 
+		if (name == "triangulo") {
 
 			//And destroy the spaceship
-			Destroy(obj.gameObject);
+			Destroy (obj.gameObject);
+			Application.LoadLevel ("Ranking");
+		}
 
 		// If it collided with the spaceship
 		if (name == "enemy") 
