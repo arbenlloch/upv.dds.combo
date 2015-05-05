@@ -26,7 +26,7 @@ namespace AssemblyCSharp
 		public void construyeEnemigo(Vector3 spawnPoint, double dificultad, GameObject enemigoJuego){
 
 			if (dificultad == 1) {
-				Debug.Log("Difultad 1");
+				//Debug.Log("Difultad 1");
 				Instantiate (enemigoJuego, spawnPoint, Quaternion.identity);
 			}
 			/**else

@@ -18,8 +18,10 @@ public class EnemigoCombo1 : EnemigoCombo {
 		if (comp && Input.GetKeyDown ("m"))
 				comp2 = true;
 
-		if (comp && comp2 && Input.GetKeyDown ("g"))
-					Destroy (gameObject);
+		if (comp && comp2 && Input.GetKeyDown ("g")) {
+			NotificationCenter.DefaultCenter().PostNotification(this,"IncrementarPuntos",1);
+			Destroy (gameObject);
+		}
 	}
 
 }

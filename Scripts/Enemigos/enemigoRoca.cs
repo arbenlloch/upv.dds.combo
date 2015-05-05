@@ -8,7 +8,6 @@ public class EnemigoRoca : EnemigoStandard {
 
 	public EnemigoRoca(){
 		setNumEnemigos (getNumEnemigo()+1);
-		Debug.Log("Soy el enemigo numero "+getNumEnemigo());
 	}
 
 	void Start(){

@@ -16,11 +16,20 @@ public class EnemigoStandard : Enemigo
 	void OnTriggerEnter2D(Collider2D obj){
 		var name = obj.gameObject.name;
 
-		if (name == "bullet(Clone)" || name == "triangulo") {
+		if (name == "bullet(Clone)") {
 			//Desturye EnemigoStandard
 			Destroy(gameObject);
+			NotificationCenter.DefaultCenter().PostNotification(this,"IncrementarPuntos",1);
 			//Desturye Bala o el jugador
 			Destroy(obj.gameObject);
+		}
+		if (name == "triangulo") {
+			//Desturye EnemigoStandard
+			Destroy (gameObject);
+			//Desturye Bala o el jugador
+			Destroy (obj.gameObject);
+			//Lanzamos Gameover
+			Application.LoadLevel ("Gameover");
 		}
 	}
 }

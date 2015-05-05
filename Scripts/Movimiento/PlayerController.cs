@@ -7,8 +7,10 @@ public class PlayerController : MonoBehaviour
 {
 	public float velocity;
 	public GameObject bala;
+	public Puntuacion puntuacion;
 
 	//VERSION 2D
+
 	void Update(){
 
 		float inputVertical;
@@ -26,48 +28,14 @@ public class PlayerController : MonoBehaviour
 		//PONER CONTADOR PARA CONTROLAR NUMERO DE BALAS
 		
 		   }
+
 	}
 	void OnTriggerEnter2D(Collider2D triangulo){
 		
 		var nombre = triangulo.gameObject.name;
 		if (nombre == "paredInferior" || nombre == "paredSuperior") {
 			Destroy (gameObject);
+			Application.LoadLevel("Gameover");
 		}
 	}
 }
-	
-
-	//VERSION 3D
-	/**
-	 * 
-	 * [System.Serializable]
-	public class Boundary
-	{
-		public float xMin, xMax, zMin, zMax;
-	}
-	
-	public float speed;
-	public float tilt;
-	public Boundary boundary;
-
-	void FixedUpdate () //TIENE QUE VER CON DELTATIME PARA QUE EL JUEGO TENGA UN TIEMPO DE EJECUCION NORMALIZADO
-	{
-		float moveHorizontal = Input.GetAxis ("Horizontal");
-		//NOS INTERESA EL MOVIMIENTO VERTICAL, 
-		float moveVertical = Input.GetAxis ("Vertical");
-		
-		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
-		rigidbody.velocity = movement * speed;
-
-		/** SIRVER PARA LIMITAR EL ESPACIO DEL PLAYER EN LA PANTALL, EN NUESTRO CASO SON LIMITADAS POR COLLIDERS
-		rigidbody.position = new Vector3 
-			(
-				/Mathf.Clamp (rigidbody.position.x, boundary.xMin, boundary.xMax), 
-				0.0f, 
-				Mathf.Clamp (rigidbody.position.z, boundary.zMin, boundary.zMax)
-				);
-
-		//Quaternion se usa para transformar vectores 3d.
-		//rigidbody.rotation = Quaternion.Euler (0.0f, 0.0f, rigidbody.velocity.x * -tilt);
-	}
-	*/

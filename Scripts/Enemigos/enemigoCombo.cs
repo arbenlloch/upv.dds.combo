@@ -3,11 +3,12 @@ using System.Collections;
 using System;
 
 
+
 public class EnemigoCombo : Enemigo {
+	public static int incremento=5;
 
 	public EnemigoCombo(){
 		setNumEnemigos (getNumEnemigo()+1);
-		Debug.Log("Soy el enemigo numero " + getNumEnemigo());
 	}
 
 	// Public variable that contains the speed of the enemy
@@ -36,14 +37,16 @@ public class EnemigoCombo : Enemigo {
 									
 			//And destroy the bullet
 			Destroy(obj.gameObject);
+
 		
 		
 		// If it collided with the spaceship
 		if (name == "triangulo") {
 
-			//And destroy the spaceship
+
+		//And destroy the spaceship
 			Destroy (obj.gameObject);
-			Application.LoadLevel ("Ranking");
+			Application.LoadLevel ("Gameover");
 		}
 
 		// If it collided with the spaceship

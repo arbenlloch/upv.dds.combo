@@ -14,7 +14,7 @@ public class NaceEnemigo : MonoBehaviour {
 
 	void Start() {
  
-		if (dificultad == 1) InvokeRepeating("construir", spawnTime, spawnTime);
+		if (dificultad == 1) InvokeRepeating("construir", spawnTime, spawnTime2);
 		if (dificultad == 2) InvokeRepeating("construir", spawnTime, spawnTime);
 		if (dificultad == 3) InvokeRepeating("construir", spawnTime, spawnTime);
 		if (dificultad == 4) InvokeRepeating("construir", spawnTime, spawnTime);
@@ -22,7 +22,7 @@ public class NaceEnemigo : MonoBehaviour {
 	}
 
 	void construir(){
-		Debug.Log("Hola");
+
 	    new EnemigoFabrica().construyeEnemigo(origenEnemigoStandard(),dificultad, enemigoStandard);
 	    new EnemigoFabrica().construyeEnemigo(origenEnemigoCombo(),dificultad, enemigoCombo);
 	}
