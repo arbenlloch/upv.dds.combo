@@ -11,9 +11,14 @@ public class NaceEnemigo : MonoBehaviour {
 	private double pasadas;
 	public GameObject enemigoStandard;
 	public GameObject enemigoCombo;
+	public EnemigoFabrica fabricaStandar;
+	public EnemigoFabrica fabricaCombos;
 
 	void Start() {
  
+		fabricaStandar = new EnemigoFabrica();
+		fabricaCombos = new EnemigoFabrica();
+		
 		if (dificultad == 1) InvokeRepeating("construir", spawnTime, spawnTime2);
 		if (dificultad == 2) InvokeRepeating("construir", spawnTime, spawnTime);
 		if (dificultad == 3) InvokeRepeating("construir", spawnTime, spawnTime);
@@ -23,8 +28,8 @@ public class NaceEnemigo : MonoBehaviour {
 
 	void construir(){
 
-	    new EnemigoFabrica().construyeEnemigo(origenEnemigoStandard(),dificultad, enemigoStandard);
-	    new EnemigoFabrica().construyeEnemigo(origenEnemigoCombo(),dificultad, enemigoCombo);
+		fabricaStandar.construyeEnemigo(origenEnemigoStandard(),dificultad, enemigoStandard);
+	    fabricaCombos.construyeEnemigo(origenEnemigoCombo(),dificultad, enemigoCombo);
 	}
 
 	Vector3 origenEnemigoStandard() {

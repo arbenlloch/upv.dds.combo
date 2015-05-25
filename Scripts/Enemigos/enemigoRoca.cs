@@ -14,5 +14,6 @@ public class EnemigoRoca : EnemigoStandard {
 
 		rigidbody2D.velocity = new Vector2(speed,0);
 		rigidbody2D.angularVelocity = UnityEngine.Random.Range(-200, 200);
+		Destroy(gameObject, 7);
 	}
 }
