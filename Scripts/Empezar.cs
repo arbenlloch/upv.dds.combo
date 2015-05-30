@@ -17,6 +17,9 @@ public class Empezar : MonoBehaviour {
 			//playerDecorado = playerDecorandose.GetComponent<PlayerController>();
 			auxTime = Time.realtimeSinceStartup;
 			playerDecorado = null;
+
+
+		Puntuacion.ObjetoPuntuacion ();
 	}
 
 	// Update is called once per frame
