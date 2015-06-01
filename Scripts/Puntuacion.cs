@@ -7,25 +7,23 @@ public class Puntuacion : MonoBehaviour{
 	
 	public int puntuacion; // <--Refactoring!!!!!!!!!!!!!!!!
 	public TextMesh texto;
-	private static Puntuacion objetoPuntuacion; //averiguar que significa "_" (Creo que parar diferenciar metodo de variable
-
+	private static Puntuacion objetoPuntuacion=null; //averiguar que significa "_" (Creo que parar diferenciar metodo de variable
+	private static GameObject gameObjetoPuntuacion=null;
 
 	//Patron Singleton
 	public static Puntuacion ObjetoPuntuacion(){
 		Debug.Log ("SE ESTA CREANDO");
 		Debug.Log (objetoPuntuacion);
 			if(objetoPuntuacion == null){
-				GameObject objPuntuacion = new GameObject ("Objeto Puntuacion");
-				objetoPuntuacion = objPuntuacion.AddComponent<Puntuacion>();
-			Debug.Log ("SE HA AÑADIDO");
-			Debug.Log (objetoPuntuacion);
+				gameObjetoPuntuacion = new GameObject ("Objeto Puntuacion");
+				objetoPuntuacion = gameObjetoPuntuacion.AddComponent<Puntuacion>();
+				Debug.Log ("SE HA AÑADIDO");
+				Debug.Log (objetoPuntuacion);
 				//Tell unity not to destroy this object when loading a new scene!
-				DontDestroyOnLoad(objetoPuntuacion);
-				}
 				
-				return objetoPuntuacion;
 			}
-		
+		return objetoPuntuacion;
+	}
 
 	void Awake (){
 		Debug.Log (puntuacion);
@@ -48,8 +46,10 @@ public class Puntuacion : MonoBehaviour{
 		
 		
 	void Start (){
+		DontDestroyOnLoad(objetoPuntuacion);
+		DontDestroyOnLoad(texto);
+		Puntuacion.ObjetoPuntuacion ();
 		NotificationCenter.DefaultCenter().AddObserver(this, "IncrementarPuntos");
-
 	}
 	
 	void IncrementarPuntos(Notification notification){ 
@@ -58,13 +58,19 @@ public class Puntuacion : MonoBehaviour{
 		}
 
 	void ActualizarMarcador(){
-		texto.text = puntuacion.ToString();
+		//if (Application.loadedLevelName == "Juego") {
+			texto.text = puntuacion.ToString ();
+		//}
 	}
 	void Update (){
 
-//		GetComponent. = 
 		ObjetoPuntuacion().ActualizarMarcador ();
-
+		if (Application.loadedLevelName == "Gameover") {
+			texto.transform.position = new Vector3(223,180,0);
+			texto.fontSize = 250;
+			//jugador = GameObject.Find ("triangulo");
+			//playerDecorandose = jugador.GetComponent<PlayerController> ();
+		}
 		Debug.Log (Puntuacion.objetoPuntuacion.puntuacion);
 
 	}
