@@ -92,7 +92,8 @@ public class PlayerController : MonoBehaviour,PlayerDDS
 		if (Input.GetKeyDown("space")) {
         // Create a new bullet at “transform.position”
         // Which is the current position of the ship
-        Instantiate(bala, transform.position, Quaternion.identity);
+		Vector3 posicionBala= new Vector3(transform.position.x + 1, transform.position.y,transform.position.z);
+        Instantiate(bala,posicionBala, Quaternion.identity);
 		}
 		Debug.Log ("SiguienteAFuncionalidad");
 	}
