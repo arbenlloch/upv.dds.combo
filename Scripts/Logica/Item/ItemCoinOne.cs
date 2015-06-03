@@ -46,6 +46,6 @@ public class ItemCoinOne : MonoBehaviour
 		}
 =======
 		}*/
->>>>>>> origin/master
+//>>>>>>> origin/master
 	}
 }
