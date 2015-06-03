@@ -6,7 +6,6 @@ public class UsoItems{
 	
 	public static PlayerDDS aplicarCoinOne(PlayerDDS pl){
 		PlayerDDS playerCoinOne = new DecoradorCoinOne(pl);
-		Debug.Log ("Devolviendo un decoradorCoinOne");
 		return playerCoinOne;
 	}
 	

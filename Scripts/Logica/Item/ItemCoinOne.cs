@@ -53,66 +53,9 @@ public class ItemCoinOne : MonoBehaviour
 			//Lanzamos Gameover
 		}
 
-		if (name == "bullet(Clone)") {
+		/*if (name == "bullet(Clone)") {
 			//Desturye Bala o el jugador
 			Destroy(obj.gameObject);
-		}
+		}*/
 	}
-
-//	private void aplicaCoinOne(){
-//		//Component g = GameObject.Find ("triangulo").GetComponent("PlayerController");
-//		 jugador = GameObject.FindGameObjectWithTag("Player");
-//		Debug.Log ("Dentro de aplicaCoInOne y estado de destruido es: "+destruido);
-//		//Sprite g = Sprite.FindObjectOfType();
-//		//Get
-//
-//
-//		PlayerController playerSinDecorado = jugador.GetComponent<PlayerController>();
-//		playerSinDecorado.setMonedaUnoEstado (destruido);
-//		PlayerDDS playerDecorado = playerSinDecorado.GetComponent<PlayerController>();
-//		//PlayerDDS y = (PlayerController) jugador.GetComponent("PlayerController.cs");
-//		
-//		playerDecorado = UsoItems.aplicarCoinOne (playerDecorado);
-//		//Debug.Log ((PlayerControlloer)p.getMonedaUnoEstado ());
-//		playerDecorado.funcionalidad();
-//		
-//		/*  // To access public variables and functions 
-//    // in another script attached to the same game object.
-//    var script : ScriptName;
-//    script = GetComponent("ScriptName");
-//    script.DoSomething ();*/
-//		
-//		Debug.Log ("Saliendo de aplicaCoInOne");
-//	    //g = new DecoradorCoinOne(y);
-//		//g.GetComponent("PlayerController")
-//	}
-
-
-	/*
-	 * public class Puntuacion : MonoBehaviour{
-		public int puntuacion;
-	public TextMesh texto;
-		
-
-	void Start (){
-		NotificationCenter.DefaultCenter().AddObserver(this, "IncrementarPuntos");
-		puntuacion = 0;
-	}
-	
-	void IncrementarPuntos(Notification notification){ 
-		int puntosAIcrementar = (int)notification.data;	
-		puntuacion += puntosAIcrementar;
-		Debug.Log (puntuacion);
-		}
-
-	void ActualizarMarcador(){
-		texto.text = puntuacion.ToString();
-	}
-	void Update (){
-		ActualizarMarcador ();
-	}
-}
-
-
-	 */
 }

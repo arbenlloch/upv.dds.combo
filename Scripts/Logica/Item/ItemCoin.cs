@@ -26,10 +26,10 @@ public class ItemCoin : MonoBehaviour
 
 		}
 		
-		if (name == "bullet(Clone)") {
+		/*if (name == "bullet(Clone)") {
 			//Desturye Bala o el jugador
 			Destroy(obj.gameObject);
-		}
+		}*/
 		
 	}
 }
