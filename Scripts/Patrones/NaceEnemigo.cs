@@ -9,8 +9,9 @@ public class NaceEnemigo : MonoBehaviour {
 	public float spawnTime2 = 5;
 	private int	dificultad = 1;
 	private double pasadas;
-	public GameObject enemigoStandard;
-	public GameObject enemigoCombo;
+	public GameObject enemigoBala;
+	public GameObject enemigoRoca;
+	public GameObject enemigoCombo1;
 	public EnemigoFabrica fabricaStandar;
 	public EnemigoFabrica fabricaCombos;
 
@@ -27,9 +28,16 @@ public class NaceEnemigo : MonoBehaviour {
 	}
 
 	void construir(){
-
-		fabricaStandar.construyeEnemigo(origenEnemigoStandard(),dificultad, enemigoStandard);
-	    fabricaCombos.construyeEnemigo(origenEnemigoCombo(),dificultad, enemigoCombo);
+		int aleatoriedad = Random.Range(1,3);
+		switch(aleatoriedad){
+		case 1:
+			fabricaStandar.construyeEnemigo(origenEnemigoStandard(),dificultad,enemigoRoca);
+			break;
+		case 2:
+			fabricaStandar.construyeEnemigo(origenEnemigoStandard(),dificultad,enemigoBala);
+			break;
+		}
+		fabricaCombos.construyeEnemigo(origenEnemigoCombo(),dificultad, enemigoCombo1);
 	}
 
 	Vector3 origenEnemigoStandard() {

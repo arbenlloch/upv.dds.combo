@@ -76,4 +76,7 @@ public class EnemigoCombo : Enemigo {
 	public bool getEstaActivaMonedaUno(){
 		return this.itemCoinUno;
 	}
+	void Update(){
+
+	}
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using System.Collections;
 
 public class Empezar : MonoBehaviour {
@@ -25,15 +26,14 @@ public class Empezar : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+
 		if (Application.loadedLevelName == "Juego") {
 			Debug.Log ("Antes del decorado 1 "+playerDecorandose.getMonedaUnoEstado());
 			if (playerDecorandose.getMonedaUnoEstado () && (auxTime + 20.0) >= Time.realtimeSinceStartup) {
-				Debug.Log ("Paso 1 item añadido realizado");
 //			if(playerDecorado==null){
 				playerDecorado = UsoItems.aplicarCoinOne (playerDecorandose);
 //			}
 				playerDecorado.funcionalidad ();
-				Debug.Log ("Fuera del reestablecimiento este es auxTime " + auxTime + 20.0 + " y este el realTime " + Time.realtimeSinceStartup);
 				if ((auxTime + 20.0) < Time.realtimeSinceStartup) {
 					Debug.Log ("Dentro del reestablecimiento");
 					jugador = GameObject.Find ("triangulo");
@@ -62,7 +62,6 @@ public class Empezar : MonoBehaviour {
 			}
 			//playerDecorandose.ReestablecerValores ();
 			//playerDecorandose.funcionalidad();
-			Debug.Log ("Fuera del if");
 		}
 	}
 }

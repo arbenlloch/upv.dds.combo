@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour,PlayerDDS
 	private bool controlItemOne;
 	private bool controlItemTwo;
 	private double tiempoCoinOne;
+
 	//VERSION 2D
 	GameObject coinOne;
 	ItemCoinOne m;
@@ -86,20 +87,23 @@ public class PlayerController : MonoBehaviour,PlayerDDS
 //			m = coinOne.GetComponent<ItemCoinOne>();
 //			setMonedaUnoEstado (m.getDestruido());
 //		}
-		Debug.Log("Estado de la moneda en el player controller "+monedaUnoEstado);
-		Debug.Log("Estado de la bala destruida en el player controller "+controlBalaDestruida);
+
+
 
 		funcionalidad();
    }
 
 	
 	void OnTriggerEnter2D(Collider2D triangulo){
-		
+
 		var nombre = triangulo.gameObject.name;
 		if (nombre == "paredInferior" || nombre == "paredSuperior") {
+
 			Destroy (gameObject);
 			Application.LoadLevel("Gameover");
+
 		}
+		
 	}
 
 	public void funcionalidad()
@@ -107,11 +111,15 @@ public class PlayerController : MonoBehaviour,PlayerDDS
 		if (Input.GetKeyDown("space")) {
         // Create a new bullet at “transform.position”
         // Which is the current position of the ship
+<<<<<<< HEAD
         Instantiate(bala, transform.position, Quaternion.identity);
 		//UnityEngine.GameObject prefabBala = (GameObject)Resources.Load("Assets/upv.dds.combo/Prefabs/bullet");
 
 		//prefabBala.transform.localScale =new Vector3 (5, 15, 2);
+=======
+		Vector3 posicionBala= new Vector3(transform.position.x + 1, transform.position.y,transform.position.z);
+        Instantiate(bala,posicionBala, Quaternion.identity);
+>>>>>>> origin/master
 		}
-		Debug.Log ("SiguienteAFuncionalidad");
 	}
 }
