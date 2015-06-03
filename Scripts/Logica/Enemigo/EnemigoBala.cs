@@ -13,4 +13,3 @@ public class EnemigoBala : EnemigoStandard
 		rigidbody2D.velocity = new Vector2(speed,0);
 	}		
 }
-

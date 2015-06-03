@@ -12,8 +12,10 @@ public class PlayerController : MonoBehaviour,PlayerDDS
 	private float inputVertical;
 	private float yVelocity;
 	private bool monedaUnoEstado;
+	private bool monedaDosEstado;
 	private bool controlBalaDestruida;
 	private bool controlItemOne;
+	private bool controlItemTwo;
 	private double tiempoCoinOne;
 	//VERSION 2D
 	GameObject coinOne;
@@ -28,8 +30,10 @@ public class PlayerController : MonoBehaviour,PlayerDDS
 
 	public void ReestablecerValores (){
 		this.monedaUnoEstado= false;
+		this.monedaDosEstado= false;
 		this.controlBalaDestruida = false;
 		this.controlItemOne = false;
+		this.controlItemTwo = false;
 	}
 
 	public void setTiempoCoinOne( double tiempoCoinOne){
@@ -43,9 +47,16 @@ public class PlayerController : MonoBehaviour,PlayerDDS
 	public void setMonedaUnoEstado( bool estadoMoneda){
 		this.monedaUnoEstado = estadoMoneda;
 	}
-
 	public bool getMonedaUnoEstado(){
 		return this.monedaUnoEstado;
+	}
+
+	public void setMonedaDosEstado( bool estadoMoneda){
+		this.monedaDosEstado = estadoMoneda;
+	}
+
+	public bool getMonedaDosEstado(){
+		return this.monedaDosEstado;
 	}
 
 	public void setcontrolBalaDestruida(bool m){
@@ -56,10 +67,14 @@ public class PlayerController : MonoBehaviour,PlayerDDS
 		this.controlItemOne = itemOne;
 	}
 
+	public void setControlItemTwo(bool itemtwo){
+		this.controlItemTwo = itemtwo;
+	}
+
 	public bool getControlBalaDestruida(){
 		return this.controlBalaDestruida;
 	}
-	
+
 	void Update(){
 
 		inputVertical =Input.GetAxis("Vertical") * 10;
@@ -93,9 +108,10 @@ public class PlayerController : MonoBehaviour,PlayerDDS
         // Create a new bullet at “transform.position”
         // Which is the current position of the ship
         Instantiate(bala, transform.position, Quaternion.identity);
+		//UnityEngine.GameObject prefabBala = (GameObject)Resources.Load("Assets/upv.dds.combo/Prefabs/bullet");
+
+		//prefabBala.transform.localScale =new Vector3 (5, 15, 2);
 		}
 		Debug.Log ("SiguienteAFuncionalidad");
 	}
-
-
 }

@@ -9,5 +9,10 @@ public class UsoItems{
 		Debug.Log ("Devolviendo un decoradorCoinOne");
 		return playerCoinOne;
 	}
-	
+
+	public static PlayerDDS aplicarCoinTwo(PlayerDDS pl){
+		PlayerDDS playerCoinTwo = new DecoradorCoinTwo(pl);
+		Debug.Log ("Devolviendo un decoradorCoinTwo");
+		return playerCoinTwo;
+	}
 }

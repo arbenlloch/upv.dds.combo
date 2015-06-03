@@ -26,6 +26,7 @@ public class Empezar : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Application.loadedLevelName == "Juego") {
+			Debug.Log ("Antes del decorado 1 "+playerDecorandose.getMonedaUnoEstado());
 			if (playerDecorandose.getMonedaUnoEstado () && (auxTime + 20.0) >= Time.realtimeSinceStartup) {
 				Debug.Log ("Paso 1 item añadido realizado");
 //			if(playerDecorado==null){
@@ -37,10 +38,29 @@ public class Empezar : MonoBehaviour {
 					Debug.Log ("Dentro del reestablecimiento");
 					jugador = GameObject.Find ("triangulo");
 					playerDecorandose = jugador.GetComponent<PlayerController> ();
-					playerDecorandose.ReestablecerValores ();
+
 					auxTime = Time.realtimeSinceStartup;
 				}
 			}
+
+			//Funcionalidad decorado2
+			Debug.Log("Estado de la moneda 2"+playerDecorandose.getMonedaDosEstado());
+			if (playerDecorandose.getMonedaDosEstado () && (auxTime + 20.0) >= Time.realtimeSinceStartup) {
+				Debug.Log ("Paso 1 item2 añadido realizado");
+				playerDecorado = UsoItems.aplicarCoinTwo (playerDecorandose);
+
+				playerDecorado.funcionalidad ();
+				Debug.Log ("Fuera del reestablecimiento este es auxTime " + auxTime + 20.0 + " y este el realTime " + Time.realtimeSinceStartup);
+				if ((auxTime + 20.0) < Time.realtimeSinceStartup) {
+					Debug.Log ("Dentro del reestablecimiento2");
+					jugador = GameObject.Find ("triangulo");
+					playerDecorandose = jugador.GetComponent<PlayerController> ();
+					playerDecorandose.bala.transform.localScale = new Vector3 (2,2,2);
+					auxTime = Time.realtimeSinceStartup;
+				}
+
+			}
+			//playerDecorandose.ReestablecerValores ();
 			//playerDecorandose.funcionalidad();
 			Debug.Log ("Fuera del if");
 		}

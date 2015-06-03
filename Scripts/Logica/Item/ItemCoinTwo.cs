@@ -1,16 +1,17 @@
 using UnityEngine;
 using System.Collections;
 
-public class ItemCoinOne : MonoBehaviour
-{	
+public class ItemCoinTwo : MonoBehaviour
+{
 	public int speed = -5;
-	private bool destruido;
+	private bool destruido2;
 	private GameObject jugador;
-	private PlayerController playerDecorandose;
+	private PlayerController playerDecorandose2;
 
-	public ItemCoinOne(){
-		this.destruido = false;
+	public ItemCoinTwo(){
+		this.destruido2 = false;
 	}
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -19,26 +20,25 @@ public class ItemCoinOne : MonoBehaviour
 	}
 
 	public bool getDestruido(){
-		return this.destruido;
+		return this.destruido2;
 	}
 
 	public void setDestruido(bool d){
-		this.destruido = d;
+		this.destruido2 = d;
 	}
 
-	void  OnTriggerEnter2D(Collider2D obj){
+	void OnTriggerEnter2D(Collider2D obj){
 		var name = obj.gameObject.name;
-		
+
 		if (name == "triangulo") {
-			destruido = true;
+			destruido2 = true;
 			jugador = GameObject.Find ("triangulo");
-			playerDecorandose = jugador.GetComponent<PlayerController>();
-			playerDecorandose.setMonedaUnoEstado(destruido);
-//			playerDecorandose.setTiempoCoinOne(playerDecorandose.getTiempoCoinOne()-Time.realtimeSinceStartup);
+			playerDecorandose2 = jugador.GetComponent<PlayerController>();
+			playerDecorandose2.setMonedaDosEstado(destruido2);
 
 			Destroy (gameObject);
 		}
-
+		
 		if (name == "bullet(Clone)") {
 			//Desturye Bala o el jugador
 			Destroy(obj.gameObject);
