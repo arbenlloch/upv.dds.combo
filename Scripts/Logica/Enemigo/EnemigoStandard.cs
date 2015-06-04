@@ -20,7 +20,7 @@ public class EnemigoStandard : Enemigo
 			Destroy(obj.gameObject);
 			//Desturye EnemigoStandard
 			Destroy(gameObject);
-			NotificationCenter.DefaultCenter().PostNotification(this,"IncrementarPuntos",1);
+			NotificationCenter.DefaultCenter().PostNotification(this,"IncrementarPuntos",4);
 			//Desturye Bala o el jugador
 
 		}

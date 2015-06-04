@@ -8,7 +8,7 @@ public class UsoItems{
 		PlayerDDS playerCoinOne = new DecoradorCoinOne(pl);
 		return playerCoinOne;
 	}
-
+	
 	public static PlayerDDS aplicarCoinTwo(PlayerDDS pl){
 		PlayerDDS playerCoinTwo = new DecoradorCoinTwo(pl);
 		Debug.Log ("Devolviendo un decoradorCoinTwo");

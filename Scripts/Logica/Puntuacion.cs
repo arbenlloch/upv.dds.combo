@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 
 
-public class Puntuacion : MonoBehaviour{
+public class Puntuacion : MonoBehaviour,iPuntuacion {
 	
 	public int puntuacion; // <--Refactoring!!!!!!!!!!!!!!!!
 	public TextMesh texto;
@@ -43,13 +43,13 @@ public class Puntuacion : MonoBehaviour{
 		Puntuacion.ObjetoPuntuacion ();
 		NotificationCenter.DefaultCenter().AddObserver(this, "IncrementarPuntos");
 	}
-	
+
 	void IncrementarPuntos(Notification notification){ 
 		int puntosAIcrementar = (int)notification.data;	
 		puntuacion += puntosAIcrementar;
 		}
 
-	void ActualizarMarcador(){
+	public void actualizarMarcador(){
 		//if (Application.loadedLevelName == "Juego") {
 			texto.text = puntuacion.ToString ();
 		//}
@@ -59,7 +59,7 @@ public class Puntuacion : MonoBehaviour{
 
 	void Update (){
 
-		ObjetoPuntuacion().ActualizarMarcador ();
+		ObjetoPuntuacion().actualizarMarcador ();
 		if (Application.loadedLevelName == "Gameover") {
 			texto.transform.position = new Vector3(220,158,0);
 			texto.fontSize = 250;

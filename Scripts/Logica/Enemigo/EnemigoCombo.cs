@@ -43,7 +43,7 @@ public class EnemigoCombo : Enemigo {
 			Destroy(gameObject);
 		}
 	}*/
-	
+
 
 	public void OnTriggerEnter2D(Collider2D obj){
 		var name = obj.gameObject.name;
