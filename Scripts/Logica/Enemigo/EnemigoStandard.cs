@@ -17,11 +17,12 @@ public class EnemigoStandard : Enemigo
 		var name = obj.gameObject.name;
 
 		if (name == "bullet(Clone)") {
+			Destroy(obj.gameObject);
 			//Desturye EnemigoStandard
 			Destroy(gameObject);
 			NotificationCenter.DefaultCenter().PostNotification(this,"IncrementarPuntos",1);
 			//Desturye Bala o el jugador
-			Destroy(obj.gameObject);
+
 		}
 		if (name == "triangulo") {
 			//Desturye EnemigoStandard

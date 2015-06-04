@@ -59,7 +59,7 @@ public class EnemigoCombo : Enemigo {
 			this.itemCoinUno = true;
 			Debug.Log("El control de bala destruida es: "+itemCoinUno);
 			playerControl.setControlBalaDestruida(itemCoinUno);
-			Debug.Log ("Estado de la moneda en enemigoCombo "+itemCoinUno);
+			//Debug.Log ("Estado de la moneda en enemigoCombo "+itemCoinUno);
 			//DecoradorCoinOne.TriggerEntered();
 			Destroy (obj.gameObject);
 		}

@@ -23,6 +23,7 @@ public class Empezar : MonoBehaviour {
 			//playerDecorado = playerDecorandose.GetComponent<PlayerController>();
 			tiempoAux1SinceLevelLoad = Time.timeSinceLevelLoad;
 			playerDecorado = null;
+			playerDecorandose.bala.transform.localScale = new Vector3(2,2,2);
 		}
 	}
 
@@ -32,11 +33,14 @@ public class Empezar : MonoBehaviour {
 
 			//Funcionalidad decorado1
 			//if (playerDecorandose.getMonedaUnoEstado () && (tiempoAux1SinceLevelLoad + 20.0) >= Time.timeSinceLevelLoad)
-			if (playerDecorandose.getMonedaUnoEstado ()) {
+			if (playerDecorandose.getMonedaUnoEstado()) {
 
 				playerDecorado = UsoItems.aplicarCoinOne (playerDecorandose);
 				playerDecorado.funcionalidad ();
-				StartCoroutine ("corutinaMoneda1", 10.0);
+				if(playerDecorandose.getControlItemOne()==false){
+					StartCoroutine ("corutinaMoneda1", 10.0);
+				}
+
 
 				//if ((tiempoAux1SinceLevelLoad + 20.0) < Time.timeSinceLevelLoad) {
 				//	Debug.Log ("Dentro del reestablecimiento");
@@ -69,17 +73,20 @@ public class Empezar : MonoBehaviour {
 
 	IEnumerator corutinaMoneda1 (float t){
 		
-		while (true) {
+		//while (playerDecorandose.getMonedaUnoEstado ()) {
+			playerDecorandose.setControlItemOne(true);
 			Debug.Log ("MonedaUnoEstado es: "+playerDecorandose.getMonedaUnoEstado()+"Control Bala Destruida es: "+playerDecorandose.getControlBalaDestruida()+"Control Item One es: "+playerDecorandose.getControlItemOne());
-
 			yield return new WaitForSeconds (t);
-			playerDecorandose.setMonedaUnoEstado (false);
-			playerDecorandose.setControlBalaDestruida(false);
+			playerDecorandose.setMonedaUnoEstado(false);
 			playerDecorandose.setControlItemOne(false);
+
+			//playerDecorandose.setMonedaUnoEstado (false);
+			//playerDecorandose.setControlBalaDestruida(false);
+			//playerDecorandose.setControlItemOne(false);
 			Debug.Log ("MonedaUnoEstado es: "+playerDecorandose.getMonedaUnoEstado()+" Control Bala Destruida es: "+playerDecorandose.getControlBalaDestruida()+" Control Item One es: "+playerDecorandose.getControlItemOne());
 			//playerDecorandose.bala.transform.localScale = new Vector3 (2, 2, 2);
 			//playerDecorandose.ReestablecerValores();
-		}
+		//}
 	}
 	IEnumerator corutinaMoneda2 (float t){
 	

@@ -13,8 +13,7 @@ public class ItemCoinTwo : MonoBehaviour
 	}
 
 	// Use this for initialization
-	void Start ()
-	{
+	void Start (){
 		rigidbody2D.velocity = new Vector2 (speed, 0);
 		Destroy(gameObject, 7);
 	}

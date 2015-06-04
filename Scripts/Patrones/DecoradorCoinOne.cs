@@ -6,9 +6,12 @@ public class DecoradorCoinOne : Decorador{
 	private bool controlItemOne;
 	GameObject combo1Clonado;
 	EnemigoCombo enemigoComboComponente;
+	GameObject jugador;
+	PlayerController playerDecorandose;
 	
 	public DecoradorCoinOne(PlayerDDS pl) : base(pl){
-
+		jugador = GameObject.Find ("triangulo");
+		playerDecorandose = jugador.GetComponent<PlayerController>();
 	}
 
 	public override void  funcionalidad(){
@@ -18,14 +21,14 @@ public class DecoradorCoinOne : Decorador{
 	}
 
 	public void addMataCombo(){
+		Debug.Log ("Estoy dentro de addMataCombo");
 
-		GameObject jugador = GameObject.Find ("triangulo");
-		PlayerController playerDecorandose = jugador.GetComponent<PlayerController>();
 //		combo1Clonado = GameObject.Find ("combo1(Clone)");
 		Debug.Log ("Estado del decorador, matando combo con ControlBalaDentruida " + playerDecorandose.getControlBalaDestruida());
 		if (playerDecorandose.getControlBalaDestruida()) {
-
-			GameObject.Destroy (GameObject.Find ("combo1(Clone)"));
+			combo1Clonado = GameObject.Find("combo1(Clone)");
+			GameObject.Destroy (combo1Clonado);
+			playerDecorandose.setControlBalaDestruida(false);
 		}
 	}
 	

@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour,PlayerDDS
 
 	public PlayerController(){
 		this.tiempoCoinOne = 0.0;
+		this.controlItemOne = false;
 	}
 
 	public void ReestablecerValores (){
