@@ -22,11 +22,8 @@ public class DecoradorCoinOne : Decorador{
 		GameObject jugador = GameObject.Find ("triangulo");
 		PlayerController playerDecorandose = jugador.GetComponent<PlayerController>();
 //		combo1Clonado = GameObject.Find ("combo1(Clone)");
-
+		Debug.Log ("Estado del decorador, matando combo con ControlBalaDentruida " + playerDecorandose.getControlBalaDestruida());
 		if (playerDecorandose.getControlBalaDestruida()) {
-
-
-//			enemigoComboComponente.OnTriggerEnter2D(bala.collider2D);
 
 			GameObject.Destroy (GameObject.Find ("combo1(Clone)"));
 		}
@@ -41,7 +38,6 @@ public class DecoradorCoinOne : Decorador{
 	combo1Clonado = GameObject.FindGameObjectWithTag("ECombo1");
 		if (combo1Clonado.gameObject.activeInHierarchy) {
 			this.controlItemOne = true;
-
 		}
 	}
 }

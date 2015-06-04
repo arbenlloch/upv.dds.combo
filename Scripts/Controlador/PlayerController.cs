@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour,PlayerDDS
 	public void setMonedaUnoEstado( bool estadoMoneda){
 		this.monedaUnoEstado = estadoMoneda;
 	}
+
 	public bool getMonedaUnoEstado(){
 		return this.monedaUnoEstado;
 	}
@@ -59,17 +60,20 @@ public class PlayerController : MonoBehaviour,PlayerDDS
 	public bool getMonedaDosEstado(){
 		return this.monedaDosEstado;
 	}
-
-	public void setcontrolBalaDestruida(bool m){
-		this.controlBalaDestruida = m;
-	}
-
+	
 	public void setControlItemOne(bool itemOne){
 		this.controlItemOne = itemOne;
+	}
+	public bool getControlItemOne(){
+		return this.controlItemOne;
 	}
 
 	public void setControlItemTwo(bool itemtwo){
 		this.controlItemTwo = itemtwo;
+	}
+
+	public void setControlBalaDestruida(bool m){
+		this.controlBalaDestruida = m;
 	}
 
 	public bool getControlBalaDestruida(){
@@ -87,9 +91,6 @@ public class PlayerController : MonoBehaviour,PlayerDDS
 //			m = coinOne.GetComponent<ItemCoinOne>();
 //			setMonedaUnoEstado (m.getDestruido());
 //		}
-
-
-
 		funcionalidad();
    }
 
@@ -101,9 +102,7 @@ public class PlayerController : MonoBehaviour,PlayerDDS
 
 			Destroy (gameObject);
 			Application.LoadLevel("Gameover");
-
 		}
-		
 	}
 
 	public void funcionalidad()
@@ -112,7 +111,7 @@ public class PlayerController : MonoBehaviour,PlayerDDS
         // Create a new bullet at “transform.position”
         // Which is the current position of the ship
 //<<<<<<< HEAD
-        Instantiate(bala, transform.position, Quaternion.identity);
+        //Instantiate(bala, transform.position, Quaternion.identity);
 		//UnityEngine.GameObject prefabBala = (GameObject)Resources.Load("Assets/upv.dds.combo/Prefabs/bullet");
 
 		//prefabBala.transform.localScale =new Vector3 (5, 15, 2);

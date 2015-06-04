@@ -25,7 +25,7 @@ public class DecoradorCoinTwo : Decorador{
 		playerControllerAux = playerAux.GetComponent<PlayerController>();
 		//playerControllerAux = playerControllerAux.GetComponent<Bala>();
 		if (playerControllerAux.getMonedaDosEstado()) {
-			playerControllerAux.bala.transform.localScale = new Vector3 (7,15,2);
+			playerControllerAux.bala.transform.localScale = new Vector3 (6,12,2);
 		}
 		
 

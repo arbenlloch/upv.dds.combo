@@ -43,10 +43,7 @@ public class EnemigoCombo : Enemigo {
 			Destroy(gameObject);
 		}
 	}*/
-
-	public bool TriggerPropio(){
-		return this.itemCoinUno;
-	}
+	
 
 	public void OnTriggerEnter2D(Collider2D obj){
 		var name = obj.gameObject.name;
@@ -60,8 +57,9 @@ public class EnemigoCombo : Enemigo {
 		// If it collided with a bullet destroy the bullet
 		if (name == "bullet(Clone)") {
 			this.itemCoinUno = true;
-			playerControl.setcontrolBalaDestruida(this.itemCoinUno);
-			Debug.Log ("Estado de la moneda en enemigoCombo "+this.itemCoinUno);
+			Debug.Log("El control de bala destruida es: "+itemCoinUno);
+			playerControl.setControlBalaDestruida(itemCoinUno);
+			Debug.Log ("Estado de la moneda en enemigoCombo "+itemCoinUno);
 			//DecoradorCoinOne.TriggerEntered();
 			Destroy (obj.gameObject);
 		}
