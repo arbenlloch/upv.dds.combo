@@ -14,3 +14,4 @@ public class EnemigoBala : EnemigoStandard
 		Destroy(gameObject, 7);
 	}		
 }
+

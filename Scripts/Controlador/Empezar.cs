@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections;
 
 public class Empezar : MonoBehaviour {
-
+	
 	private GameObject jugador;
 	private PlayerController playerDecorandose;
 	PlayerDDS playerDecorado;
@@ -12,11 +12,11 @@ public class Empezar : MonoBehaviour {
 	private double tiempoAux1SinceLevelLoad;
 	private double tiempoAux2;
 	private double tiempoAux3;
-
+	
 	// Use this for initialization
 	void Start () {
 		if (Application.loadedLevelName == "Juego") {
-
+			
 			//DontDestroyOnLoad (gameObject);
 			jugador = GameObject.Find ("triangulo");
 			playerDecorandose = jugador.GetComponent<PlayerController> ();
@@ -25,27 +25,27 @@ public class Empezar : MonoBehaviour {
 			playerDecorado = null;
 		}
 	}
-
+	
 	// Update is called once per frame
 	void Update () {
 		if (Application.loadedLevelName == "Juego") {
-
+			
 			//Funcionalidad decorado1
 			//if (playerDecorandose.getMonedaUnoEstado () && (tiempoAux1SinceLevelLoad + 20.0) >= Time.timeSinceLevelLoad)
 			if (playerDecorandose.getMonedaUnoEstado ()) {
-
+				
 				playerDecorado = UsoItems.aplicarCoinOne (playerDecorandose);
 				playerDecorado.funcionalidad ();
 				StartCoroutine ("corutinaMoneda1", 10.0);
-
+				
 				//if ((tiempoAux1SinceLevelLoad + 20.0) < Time.timeSinceLevelLoad) {
 				//	Debug.Log ("Dentro del reestablecimiento");
 				//	jugador = GameObject.Find ("triangulo");
 				//	playerDecorandose = jugador.GetComponent<PlayerController> ();
-
+				
 				//	tiempoAux1SinceLevelLoad = Time.timeSinceLevelLoad;
 			}
-
+			
 			//Funcionalidad decorado2
 			//if (playerDecorandose.getMonedaDosEstado () && (tiempoAux1SinceLevelLoad + 20.0) >= Time.timeSinceLevelLoad)
 			if (playerDecorandose.getMonedaDosEstado ()) {
@@ -64,14 +64,14 @@ public class Empezar : MonoBehaviour {
 			}
 		}
 	}
-			//playerDecorandose.ReestablecerValores ();
-			//playerDecorandose.funcionalidad();
-
+	//playerDecorandose.ReestablecerValores ();
+	//playerDecorandose.funcionalidad();
+	
 	IEnumerator corutinaMoneda1 (float t){
 		
 		while (true) {
 			Debug.Log ("MonedaUnoEstado es: "+playerDecorandose.getMonedaUnoEstado()+"Control Bala Destruida es: "+playerDecorandose.getControlBalaDestruida()+"Control Item One es: "+playerDecorandose.getControlItemOne());
-
+			
 			yield return new WaitForSeconds (t);
 			playerDecorandose.setMonedaUnoEstado (false);
 			playerDecorandose.setControlBalaDestruida(false);
@@ -82,7 +82,7 @@ public class Empezar : MonoBehaviour {
 		}
 	}
 	IEnumerator corutinaMoneda2 (float t){
-	
+		
 		while (true) {
 			yield return new WaitForSeconds(t);
 			playerDecorandose.bala.transform.localScale = new Vector3(2,2,2);
@@ -90,5 +90,5 @@ public class Empezar : MonoBehaviour {
 			//playerDecorandose.ReestablecerValores();
 		}
 	}
-
+	
 }

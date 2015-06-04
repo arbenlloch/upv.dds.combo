@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour,PlayerDDS
 	private bool controlItemOne;
 	private bool controlItemTwo;
 	private double tiempoCoinOne;
+	private bool paused = false;
 
 	//VERSION 2D
 	GameObject coinOne;
@@ -52,46 +53,69 @@ public class PlayerController : MonoBehaviour,PlayerDDS
 	public bool getMonedaUnoEstado(){
 		return this.monedaUnoEstado;
 	}
-
 	public void setMonedaDosEstado( bool estadoMoneda){
 		this.monedaDosEstado = estadoMoneda;
 	}
-
+	
 	public bool getMonedaDosEstado(){
 		return this.monedaDosEstado;
 	}
-	
+
+
 	public void setControlItemOne(bool itemOne){
 		this.controlItemOne = itemOne;
 	}
+
 	public bool getControlItemOne(){
 		return this.controlItemOne;
-	}
-
-	public void setControlItemTwo(bool itemtwo){
-		this.controlItemTwo = itemtwo;
-	}
-
-	public void setControlBalaDestruida(bool m){
-		this.controlBalaDestruida = m;
 	}
 
 	public bool getControlBalaDestruida(){
 		return this.controlBalaDestruida;
 	}
+	public void setControlItemTwo(bool itemtwo){
+		this.controlItemTwo = itemtwo;
+	}
+	public void setControlBalaDestruida(bool m){
+		this.controlBalaDestruida = m;
+	}
 
+	public void pausa (){
+	
+
+			if (paused) {
+				paused = false;
+				Time.timeScale = 1;
+			} else {
+				paused = true;
+				Time.timeScale = 0;
+			}
+
+		}
+
+
+  public void moverArriba(){
+	}
+	public void moverAbajo(){
+	}
+
+	
 	void Update(){
 
 		inputVertical =Input.GetAxis("Vertical") * 10;
 		yVelocity = rigidbody2D.velocity.y;
 		yVelocity = inputVertical;
 		rigidbody2D.velocity = new Vector2(0,yVelocity);
+
 //		if (coinOne!=null) {
 //			coinOne = GameObject.Find ("itemCoinOne(Clone)");
 //			m = coinOne.GetComponent<ItemCoinOne>();
 //			setMonedaUnoEstado (m.getDestruido());
 //		}
-		funcionalidad();
+
+
+
+
    }
 
 	
@@ -102,23 +126,20 @@ public class PlayerController : MonoBehaviour,PlayerDDS
 
 			Destroy (gameObject);
 			Application.LoadLevel("Gameover");
+
 		}
+		
 	}
 
 	public void funcionalidad()
 	{
-		if (Input.GetKeyDown("space")) {
+
         // Create a new bullet at “transform.position”
         // Which is the current position of the ship
-//<<<<<<< HEAD
-        //Instantiate(bala, transform.position, Quaternion.identity);
-		//UnityEngine.GameObject prefabBala = (GameObject)Resources.Load("Assets/upv.dds.combo/Prefabs/bullet");
-
-		//prefabBala.transform.localScale =new Vector3 (5, 15, 2);
-//=======
 		Vector3 posicionBala= new Vector3(transform.position.x + 1, transform.position.y,transform.position.z);
         Instantiate(bala,posicionBala, Quaternion.identity);
-//>>>>>>> origin/master
-		}
+
 	}
+
+
 }

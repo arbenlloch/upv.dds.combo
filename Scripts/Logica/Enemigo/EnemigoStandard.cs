@@ -19,7 +19,7 @@ public class EnemigoStandard : Enemigo
 		if (name == "bullet(Clone)") {
 			//Desturye EnemigoStandard
 			Destroy(gameObject);
-			NotificationCenter.DefaultCenter().PostNotification(this,"IncrementarPuntos",1);
+			NotificationCenter.DefaultCenter().PostNotification(this,"IncrementarPuntos",4);
 			//Desturye Bala o el jugador
 			Destroy(obj.gameObject);
 		}
