@@ -4,14 +4,13 @@ using System;
 
 public class UsoItems{
 	
-	public static PlayerDDS aplicarCoinOne(PlayerDDS pl){
-		PlayerDDS playerCoinOne = new DecoradorCoinOne(pl);
-		return playerCoinOne;
+	public static PlayerController aplicarCoinOne(PlayerController pl){
+		PlayerController pl2 = new DecoradorCoinOne(pl);
+		return pl2;
 	}
 	
-	public static PlayerDDS aplicarCoinTwo(PlayerDDS pl){
-		PlayerDDS playerCoinTwo = new DecoradorCoinTwo(pl);
-		Debug.Log ("Devolviendo un decoradorCoinTwo");
-		return playerCoinTwo;
+	public static PlayerController aplicarCoinTwo(PlayerController pl){
+		PlayerController pl2 = new DecoradorCoinTwo(pl);
+		return pl2;
 	}
 }

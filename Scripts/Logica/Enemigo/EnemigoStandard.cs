@@ -6,8 +6,7 @@ public class EnemigoStandard : Enemigo
 	public EnemigoStandard(){
 
 	}
-
-	// Use this for initialization
+	
 	void Start ()
 	{
 		Destroy(gameObject, 7);
@@ -17,17 +16,16 @@ public class EnemigoStandard : Enemigo
 		var name = obj.gameObject.name;
 
 		if (name == "bullet(Clone)") {
+			//Desturye Bala
 			Destroy(obj.gameObject);
 			//Desturye EnemigoStandard
 			Destroy(gameObject);
 			NotificationCenter.DefaultCenter().PostNotification(this,"IncrementarPuntos",4);
-			//Desturye Bala o el jugador
 
 		}
 		if (name == "triangulo") {
-			//Desturye EnemigoStandard
 			Destroy (gameObject);
-			//Desturye Bala o el jugador
+			//Desturye el jugador
 			Destroy (obj.gameObject);
 			//Lanzamos Gameover
 			Application.LoadLevel ("Gameover");

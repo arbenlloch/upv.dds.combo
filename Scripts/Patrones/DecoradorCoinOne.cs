@@ -1,46 +1,36 @@
 using UnityEngine;
 using System.Collections;
 using System;
+
 public class DecoradorCoinOne : Decorador{
 
 	private bool controlItemOne;
-	GameObject combo1Clonado;
+	GameObject comboClonado;
 	EnemigoCombo enemigoComboComponente;
 	GameObject jugador;
 	PlayerController playerDecorandose;
-	
-	public DecoradorCoinOne(PlayerDDS pl) : base(pl){
-		jugador = GameObject.Find ("triangulo");
-		playerDecorandose = jugador.GetComponent<PlayerController>();
+
+	public DecoradorCoinOne(PlayerController pl) : base(pl){
 	}
 
 	public override void  funcionalidad(){
-		
-		base.funcionalidad();
+		//A causa de la llamada a la funcionalidad original a traves del patron comando. Esta estara siempre presente
+		//y no necesitara llamarse explicitamente.
 		this.addMataCombo();
 	}
 
 	public void addMataCombo(){
-		Debug.Log ("Estoy dentro de addMataCombo");
-
-//		combo1Clonado = GameObject.Find ("combo1(Clone)");
-		Debug.Log ("Estado del decorador, matando combo con ControlBalaDentruida " + playerDecorandose.getControlBalaDestruida());
+		jugador = GameObject.Find ("triangulo");
+		playerDecorandose = jugador.GetComponent<PlayerDDS>();
 		if (playerDecorandose.getControlBalaDestruida()) {
-			combo1Clonado = GameObject.Find("combo1(Clone)");
-			GameObject.Destroy (combo1Clonado);
+			comboClonado = GameObject.FindWithTag("enemigoCombo");
+			GameObject.Destroy (comboClonado);
+			NotificationCenter.DefaultCenter ().PostNotification (this,"IncrementarPuntos", 1);
 			playerDecorandose.setControlBalaDestruida(false);
 		}
 	}
 	
 	public void setControlItemOne(bool itemOne){
 		this.controlItemOne = itemOne;
-	}
-
-	void encuentraEnemigo(){
-	
-	combo1Clonado = GameObject.FindGameObjectWithTag("ECombo1");
-		if (combo1Clonado.gameObject.activeInHierarchy) {
-			this.controlItemOne = true;
-		}
 	}
 }

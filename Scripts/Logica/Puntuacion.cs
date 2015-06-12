@@ -5,7 +5,7 @@ using System;
 
 public class Puntuacion : MonoBehaviour,iPuntuacion {
 	
-	public int puntuacion; // <--Refactoring!!!!!!!!!!!!!!!!
+	public int puntuacion;
 	public TextMesh texto;
 	private static Puntuacion objetoPuntuacion=null;
 	private static GameObject gameObjetoPuntuacion=null;
@@ -23,12 +23,12 @@ public class Puntuacion : MonoBehaviour,iPuntuacion {
 	}
 
 	void Awake (){
-		//Si soy la primera instancia de Puntuacion aplico singleton
+
 		if (objetoPuntuacion == null) {
 			
 			objetoPuntuacion = this;
 			DontDestroyOnLoad (gameObject);
-		} else {//Si Singleton esta aplicado y existe uan referencia a puntuacion en la escena destruyelo
+		} else {
 
 			if (this != objetoPuntuacion) {
 			Destroy (this.gameObject);
@@ -50,9 +50,7 @@ public class Puntuacion : MonoBehaviour,iPuntuacion {
 		}
 
 	public void actualizarMarcador(){
-		//if (Application.loadedLevelName == "Juego") {
 			texto.text = puntuacion.ToString ();
-		//}
 	}
 
 
@@ -63,8 +61,6 @@ public class Puntuacion : MonoBehaviour,iPuntuacion {
 		if (Application.loadedLevelName == "Gameover") {
 			texto.transform.position = new Vector3(220,158,0);
 			texto.fontSize = 250;
-			//jugador = GameObject.Find ("triangulo");
-			//playerDecorandose = jugador.GetComponent<PlayerController> ();
 		}
 
 	}

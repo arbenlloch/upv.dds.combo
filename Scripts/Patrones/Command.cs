@@ -1,17 +1,18 @@
 ﻿using UnityEngine;
 using System;
+using System.Collections;
 
 
 public abstract class Command : MonoBehaviour
-	{ 
+{ 
 
-	public PlayerController playerComando;
+	public PlayerDDS playerComando;
 	public EnemigoCombo1 combo1Comando;
 	public EnemigoCombo2 combo2Comando;
-		// Constructor general para comando.
-		//Se captura el receptor de el comando.
-		public Command(PlayerController receiver)
-		{
+	// Constructor general para comando.
+	//Se captura el receptor de el comando.
+	public Command(PlayerDDS receiver)
+	{
 			this.playerComando = receiver;
 		}
 
@@ -28,4 +29,4 @@ public abstract class Command : MonoBehaviour
 		
 		//Ejecucion de el comando
 		public abstract void Execute();
-	}
+}

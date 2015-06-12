@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
-//Constructor de extends los dos puntos. El MonoBehaviour sera el padre que tendra todo lo necesario para que 
-//el objeto tenga comportamiento
-public class PlayerController : MonoBehaviour,PlayerDDS
+public class PlayerController : MonoBehaviour
 {
 	public float velocity;
 	public GameObject bala;
@@ -18,17 +17,16 @@ public class PlayerController : MonoBehaviour,PlayerDDS
 	private bool controlItemTwo;
 	private double tiempoCoinOne;
 	private bool paused = false;
-
-	//VERSION 2D
 	GameObject coinOne;
 	ItemCoinOne m;
-
-
-
 
 	public PlayerController(){
 		this.tiempoCoinOne = 0.0;
 		this.controlItemOne = false;
+	}
+
+	//Funcionalidad que se implementara (Elemento concreto) o se decorara (DecoradorItemOne y DecoradorItemTwo)
+	public virtual void funcionalidad (){
 	}
 
 	public void ReestablecerValores (){
@@ -100,6 +98,10 @@ public class PlayerController : MonoBehaviour,PlayerDDS
 	public void moverAbajo(){
 	}
 
+	void Start(){
+	
+
+	}
 	
 	void Update(){
 
@@ -107,16 +109,6 @@ public class PlayerController : MonoBehaviour,PlayerDDS
 		yVelocity = rigidbody2D.velocity.y;
 		yVelocity = inputVertical;
 		rigidbody2D.velocity = new Vector2(0,yVelocity);
-
-//		if (coinOne!=null) {
-//			coinOne = GameObject.Find ("itemCoinOne(Clone)");
-//			m = coinOne.GetComponent<ItemCoinOne>();
-//			setMonedaUnoEstado (m.getDestruido());
-//		}
-
-
-
-
    }
 
 	
@@ -127,20 +119,7 @@ public class PlayerController : MonoBehaviour,PlayerDDS
 
 			Destroy (gameObject);
 			Application.LoadLevel("Gameover");
-
 		}
-		
 	}
-
-	public void funcionalidad()
-	{
-
-        // Create a new bullet at “transform.position”
-        // Which is the current position of the ship
-		Vector3 posicionBala= new Vector3(transform.position.x + 1, transform.position.y,transform.position.z);
-        Instantiate(bala,posicionBala, Quaternion.identity);
-
-	}
-
 
 }

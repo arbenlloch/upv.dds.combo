@@ -17,7 +17,6 @@ public class EnemigoCombo1 : EnemigoCombo {
 	}
 
 	void Update(){
-		//destruir combo1 con la letra Q + M + G (pulsadas)
 
 
 

@@ -4,7 +4,7 @@ using System.Collections;
 public class Upper_Command : Command {
 	
 
-		public Upper_Command(PlayerController receiver) :
+	public Upper_Command(PlayerDDS receiver) :
 			base(receiver)
 		{
 		}

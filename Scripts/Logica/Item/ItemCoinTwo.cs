@@ -11,8 +11,7 @@ public class ItemCoinTwo : MonoBehaviour
 	public ItemCoinTwo(){
 		this.destruido2 = false;
 	}
-
-	// Use this for initialization
+	
 	void Start (){
 		rigidbody2D.velocity = new Vector2 (speed, 0);
 		Destroy(gameObject, 7);
@@ -32,14 +31,12 @@ public class ItemCoinTwo : MonoBehaviour
 		if (name == "triangulo") {
 			destruido2 = true;
 			jugador = GameObject.Find ("triangulo");
-			playerDecorandose2 = jugador.GetComponent<PlayerController>();
+			playerDecorandose2 = jugador.GetComponent<PlayerDDS>();
 			playerDecorandose2.setMonedaDosEstado(destruido2);
-
 			Destroy (gameObject);
 		}
 		
 		if (name == "bullet(Clone)") {
-			//Desturye Bala o el jugador
 			Destroy(obj.gameObject);
 		}
 	}

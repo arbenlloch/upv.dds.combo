@@ -6,7 +6,7 @@ public class Keyboard : MonoBehaviour {
 	GameObject jugador;
 	GameObject combo1;
 	GameObject combo2;
-	PlayerController playerControlador;
+	PlayerDDS playerControlador;
 	EnemigoCombo1 enemigoCombo1;
 	EnemigoCombo2 enemigoCombo2;
 	Command Upperc;
@@ -21,25 +21,21 @@ public class Keyboard : MonoBehaviour {
 	public bool comp2 = false;
 	public bool comp3 = false;
 	public bool comp4 = false;
-
-
-	// Use this for initialization
+	
 	void Start () {
 
 		jugador = GameObject.Find ("triangulo");
-		playerControlador = jugador.GetComponent<PlayerController>();
+		playerControlador = jugador.GetComponent<PlayerDDS>();
 		Upperc = new Upper_Command(playerControlador);
 		Downc = new Down_Command(playerControlador);
 		Escc = new Esc_Command(playerControlador);
 		Spacec = new Space_Command(playerControlador);
 
-
 		invoker = new Invoker ();
 
 		invoker.SetCommand (Upperc, Downc, Escc, Spacec);
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 
 		if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -54,10 +50,8 @@ public class Keyboard : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.Space))
 			invoker.ExecuteSpace ();
 
-		//Secuencia Combos
-
+		// Trtamiento especial para los enemigos de secuencia de letras (Combos)
 		if (GameObject.Find ("combo1(Clone)") != null) {
-
 
 			combo1 = GameObject.Find ("combo1(Clone)");
 			enemigoCombo1 = combo1.GetComponent<EnemigoCombo1> ();
@@ -65,7 +59,6 @@ public class Keyboard : MonoBehaviour {
 			invoker.SetCommand (QMGc);
 		}
 
-		
 			if (Input.GetKeyDown ("q")) 
 				comp = true;
 		

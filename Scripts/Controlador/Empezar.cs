@@ -1,101 +1,66 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Empezar : MonoBehaviour {
 
 	private GameObject jugador;
-	private PlayerController playerDecorandose;
+	private PlayerController playerDecorandoseControler;
+	private PlayerController playerControl;
 	PlayerDDS playerDecorado;
 	private double tiempo = 9.0;
 	private double diferencia;
 	private double tiempoAux1SinceLevelLoad;
 	private double tiempoAux2;
 	private double tiempoAux3;
-
-	// Use this for initialization
+	private DecoradorCoinTwo decoDos;
+	
 	void Start () {
 		if (Application.loadedLevelName == "Juego") {
 
-			//DontDestroyOnLoad (gameObject);
 			jugador = GameObject.Find ("triangulo");
-			playerDecorandose = jugador.GetComponent<PlayerController> ();
-			//playerDecorado = playerDecorandose.GetComponent<PlayerController>();
+			playerControl = jugador.GetComponent<PlayerController> ();
+			decoDos = new DecoradorCoinTwo(playerControl);
+			Debug.Log(playerControl.getMonedaDosEstado());
 			tiempoAux1SinceLevelLoad = Time.timeSinceLevelLoad;
 			playerDecorado = null;
-			playerDecorandose.bala.transform.localScale = new Vector3(2,2,2);
+			playerControl.bala.transform.localScale = new Vector3(2,2,2);
 		}
 	}
 
-	// Update is called once per frame
-	void Update () {
-		if (Application.loadedLevelName == "Juego") {
+	// Este metodo se llamara por cada frame del juego
+	void Update(){
+		Debug.Log("Dentro de update" + playerControl.getMonedaDosEstado());
+		if (Application.loadedLevelName == "Juego" ) {
 
 			//Funcionalidad decorado1
-			//if (playerDecorandose.getMonedaUnoEstado () && (tiempoAux1SinceLevelLoad + 20.0) >= Time.timeSinceLevelLoad)
-			if (playerDecorandose.getMonedaUnoEstado()) {
-
-				playerDecorado = UsoItems.aplicarCoinOne (playerDecorandose);
-				playerDecorado.funcionalidad ();
-				if(playerDecorandose.getControlItemOne()==false){
+			if (playerControl.getMonedaUnoEstado()) {
+				playerDecorandoseControler = UsoItems.aplicarCoinOne(playerControl);
+				playerDecorandoseControler.funcionalidad();
+				if(playerControl.getControlItemOne()==false){
+					//Llamada a corutina donde se tratara el tiempo que el decorado 1 durara.
 					StartCoroutine ("corutinaMoneda1", 10.0);
 				}
-
-
-				//if ((tiempoAux1SinceLevelLoad + 20.0) < Time.timeSinceLevelLoad) {
-				//	Debug.Log ("Dentro del reestablecimiento");
-				//	jugador = GameObject.Find ("triangulo");
-				//	playerDecorandose = jugador.GetComponent<PlayerController> ();
-
-				//	tiempoAux1SinceLevelLoad = Time.timeSinceLevelLoad;
 			}
-
 			//Funcionalidad decorado2
-			//if (playerDecorandose.getMonedaDosEstado () && (tiempoAux1SinceLevelLoad + 20.0) >= Time.timeSinceLevelLoad)
-			if (playerDecorandose.getMonedaDosEstado ()) {
-				//Debug.Log ("Paso 1 item2 añadido realizado");
-				playerDecorado = UsoItems.aplicarCoinTwo (playerDecorandose);
-				playerDecorado.funcionalidad ();
+			if (playerControl.getMonedaDosEstado ()) {
+				playerDecorandoseControler = UsoItems.aplicarCoinTwo(playerControl);
+				playerDecorandoseControler.funcionalidad();
 				StartCoroutine ("corutinaMoneda2", 10.0);
-				playerDecorandose.setMonedaDosEstado (false);
-				//Debug.Log ("Fuera del reestablecimiento este es auxTime " + tiempoAux1SinceLevelLoad + 20.0 + " y este el realTime " + Time.timeSinceLevelLoad);
-				//if ((tiempoAux1SinceLevelLoad + 20.0) < Time.timeSinceLevelLoad) {
-				//	Debug.Log ("Dentro del reestablecimiento2");
-				//	jugador = GameObject.Find ("triangulo");
-				//	playerDecorandose = jugador.GetComponent<PlayerController> ();
-				//	playerDecorandose.bala.transform.localScale = new Vector3 (2,2,2);
-				//	tiempoAux1SinceLevelLoad = Time.timeSinceLevelLoad;
+				playerControl.setMonedaDosEstado (false);
 			}
 		}
 	}
-			//playerDecorandose.ReestablecerValores ();
-			//playerDecorandose.funcionalidad();
 
 	IEnumerator corutinaMoneda1 (float t){
-		
-		//while (playerDecorandose.getMonedaUnoEstado ()) {
-			playerDecorandose.setControlItemOne(true);
-			Debug.Log ("MonedaUnoEstado es: "+playerDecorandose.getMonedaUnoEstado()+"Control Bala Destruida es: "+playerDecorandose.getControlBalaDestruida()+"Control Item One es: "+playerDecorandose.getControlItemOne());
-			yield return new WaitForSeconds (t);
-			playerDecorandose.setMonedaUnoEstado(false);
-			playerDecorandose.setControlItemOne(false);
-
-			//playerDecorandose.setMonedaUnoEstado (false);
-			//playerDecorandose.setControlBalaDestruida(false);
-			//playerDecorandose.setControlItemOne(false);
-			Debug.Log ("MonedaUnoEstado es: "+playerDecorandose.getMonedaUnoEstado()+" Control Bala Destruida es: "+playerDecorandose.getControlBalaDestruida()+" Control Item One es: "+playerDecorandose.getControlItemOne());
-			//playerDecorandose.bala.transform.localScale = new Vector3 (2, 2, 2);
-			//playerDecorandose.ReestablecerValores();
-		//}
+		playerControl.setControlItemOne(true);
+		yield return new WaitForSeconds (t);
+		playerControl.ReestablecerValores ();
 	}
+
 	IEnumerator corutinaMoneda2 (float t){
-	
-		while (true) {
 			yield return new WaitForSeconds(t);
-			playerDecorandose.bala.transform.localScale = new Vector3(2,2,2);
-			playerDecorandose.setControlItemTwo(false);
-			//playerDecorandose.ReestablecerValores();
-		}
+		playerControl.bala.transform.localScale = new Vector3(2,2,2);
+		playerControl.setControlItemTwo(false);
 	}
-
 }

@@ -1,18 +1,18 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
-public abstract class Decorador : PlayerDDS{
-	
-	protected PlayerDDS playerDecorador;
-	
-	//UNITY TE EXIGE CONSTRUCTOR VACIO
-	
-	public Decorador(PlayerDDS pla){
-		
-		this.playerDecorador = pla;
+public abstract class Decorador : PlayerController{
+
+	public GameObject jugador;
+	protected PlayerController player;
+
+	public Decorador(PlayerController pla){
+
+		this.player = pla;
 	}
-	
-	public virtual void funcionalidad(){
-		playerDecorador.funcionalidad();
+
+	public override void funcionalidad(){
+		player.funcionalidad ();
 	}
 }

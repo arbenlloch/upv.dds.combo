@@ -3,10 +3,9 @@ using System.Collections;
 using AssemblyCSharp;
 
 public class NaceEnemigo : MonoBehaviour {
-	
-// Variable to know how fast we should create new enemies
+
 	public float spawnTime = 2;
-	public float spawnTime2 = 5;
+	public float spawnTime2 = 1;
 	private int	dificultad = 1;
 	private double pasadas;
 	public GameObject enemigoBala;
@@ -21,15 +20,12 @@ public class NaceEnemigo : MonoBehaviour {
 		fabricaStandar = new EnemigoFabrica();
 		fabricaCombos = new EnemigoFabrica();
 		
-		if (dificultad == 1) InvokeRepeating("construir", spawnTime, spawnTime2);
-		if (dificultad == 2) InvokeRepeating("construir", spawnTime, spawnTime);
-		if (dificultad == 3) InvokeRepeating("construir", spawnTime, spawnTime);
-		if (dificultad == 4) InvokeRepeating("construir", spawnTime, spawnTime);
-		if (dificultad == 5) InvokeRepeating("construir", spawnTime, spawnTime);
+	    InvokeRepeating("construir", spawnTime, spawnTime2);
 	}
 
 	void construir(){
 		int aleatoriedad = Random.Range(1,5);
+		Debug.Log (aleatoriedad);
 		switch(aleatoriedad){
 		case 1:
 			fabricaStandar.construyeEnemigo(origenEnemigoStandard(),dificultad,enemigoRoca);
@@ -38,37 +34,32 @@ public class NaceEnemigo : MonoBehaviour {
 			fabricaStandar.construyeEnemigo(origenEnemigoStandard(),dificultad,enemigoBala);
 			break;
 		case 3:
-			Debug.Log("Me creo");
 			fabricaCombos.construyeEnemigo (origenEnemigoCombo (), dificultad, enemigoCombo2);
 			break;
 		case 4:
 			fabricaCombos.construyeEnemigo (origenEnemigoCombo (), dificultad, enemigoCombo1);
 			break;
-			
+		default:
+			fabricaCombos.construyeEnemigo (origenEnemigoCombo (), dificultad, enemigoCombo1);
+			break;
 		}
-
-
-		}
+	}
 
 	Vector3 origenEnemigoStandard() {
-		// Variables to store the X position of the spawn object
-		// See image below
+
 		var x1 = transform.position.y - renderer.bounds.size.y / 2;
 		var x2 = transform.position.y + renderer.bounds.size.y / 2;
 
-		// Randomly pick a point within the spawn object
+		// Eleccion aleatoria entre un rango comprendido dentro del objeto en pantalla, spawn.
 		Vector3 spawnPoint = new Vector3 (transform.position.x, Random.Range (x1, x2), -0.5f);
 
 		return spawnPoint;
 	}
 
 	Vector3 origenEnemigoCombo() {
-		// Variables to store the X position of the spawn object
-		// See image below
 		var x1 = transform.position.y - renderer.bounds.size.y / 2;
 		var x2 = transform.position.y + renderer.bounds.size.y / 2;
-		
-		// Randomly pick a point within the spawn object
+
 		Vector3 spawnPoint = new Vector3 (transform.position.x, Random.Range (x1, x2), -0.5f);
 		
 		return spawnPoint;
